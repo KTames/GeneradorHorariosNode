@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Generador Horarios</title>
+    <script src="./jquery/dist/jquery.min.js"></script>
+    <script src="./src/generals.js"></script>
+    <script src="./src/drawTimetable.js"></script>
+    <script src="./src/call.js"></script>
+    <script src="./src/domains.js"></script>
+    <script src="./src/agregarCurso.js"></script>
+    <script src="./src/loadCourses.js"></script>
+    <script src="./src/agregarHoraACurso.js"></script>
+    <link rel="stylesheet" href="./jquery/jquery-ui/jquery-ui.min.css">
+    <script src="./jquery/jquery-ui/jquery-ui.min.js"></script>
+    <script src="./src/generarHorarios.js"></script>
+    <link rel="stylesheet" href="./jquery/jquery-ui/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="./jquery/jquery-ui/jquery-ui.structure.min.css">
+    <style>
+        * {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+        }
+
+        table.tbCursos {
+            /*width: 100%;*/
+            margin-left: 3rem;
+            margin-right: 3rem;
+        }
+
+        table.tbCursos > tr > td {
+            min-width: calc(100%/3);
+        }
+
+        table.tbCursos > tr > td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        table td{
+            /*border: 1px solid black;*/
+            padding: 0;
+        }
+
+        table.tHorario tr:nth-child(odd) {
+            background-color: rgba(0, 0, 0, .2);
+        }
+
+        table.tHorario td:nth-child(even) {
+            background-color: rgba(35, 255, 240, 0.18);
+        }
+
+        table.tHorario td:first-child {
+            text-align: center;
+        }
+
+        .hspan span {
+            display: flex;
+            align-self: center;
+        }
+
+        .hSpan {
+            background-color: rgb(0, 43, 87);
+            border-radius: 10px;
+            color: white;
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            place-content: center;
+            overflow: scroll;
+            font-size: .7rem;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #forms {
+            text-align: center;
+        }
+
+       #addHoursForm {
+           border-collapse: collapse;
+           border: 5px solid white;
+           width: 25rem;
+       }
+
+        #addHoursForm tr:not(:last-child) > td {
+            padding-bottom: 1rem;
+        }
+
+        .center-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tr-spacing td:not(:first-child), .tr-spacing th:not(:first-child) {
+            padding-left: 10rem;
+        }
+
+        .tr-spacing td {
+            line-height: 2rem;
+        }
+
+        .align-top {
+            float: left;
+        }
+
+        /*.no-close .ui-dialog-titlebar-close {*/
+        /*    display: none;*/
+        /*}*/
+
+    </style>
+</head>
+<body style="padding-bottom: 2rem">
+    <div id="cursosActuales">
+    </div>
+
+    <br><br><br><hr>
+
+    <div id="forms">
+        <h2>Agregar curso</h2>
+        <div class="center-flex">
+            <label for="nombreCurso">Nombre:&nbsp;</label>&nbsp;&nbsp;
+            <input class="ui-widget" type="text" name="nombreCurso" id="nombreCurso">&nbsp;&nbsp;
+            <a class="ui-button" onclick="agregarCurso()">Agregar</a>
+        </div>
+
+
+        <h2>Agregar horario al curso</h2>
+        <div class="center-flex">
+            <table>
+                <tr><td><h4>Datos:</h4></td></tr>
+                <tr>
+                    <td class="center-flex">
+                        <table id="addHoursForm" class="center-flex">
+                            <tr>
+                                <td><label for="toCourse">Curso: </label></td>
+                                <td><select name="toCourse" id="toCourse">
+                                    <option value="">Agrega un curso primero</option>
+                                </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label for="nuevoProfesor">Profesor: </label></td>
+                                <td><input type="text" name="nuevoProfesor" id="nuevoProfesor"></td>
+                            </tr>
+                            <tr>
+                                <td><label for="nuevoGrupo">Grupo:</label></td>
+                                <td><input type="text" name="nuevoGrupo" id="nuevoGrupo"></td>
+                            </tr>
+                            <br>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td><hr></td>
+                </tr>
+                <tr><td><h4>Horario:</h4></td></tr>
+                <tr>
+                    <td class="center-flex">
+                        <table class="tr-spacing">
+                            <tr><th>Agregar</th><th>Eliminar</th></tr>
+                            <tr>
+                                <td><label for="nuevoDia">Día&nbsp;</label>
+                                    <select name="nuevoDia" id="nuevoDia">
+                                        <option value="L">Lunes</option>
+                                        <option value="K">Martes</option>
+                                        <option value="M">Miércoles</option>
+                                        <option value="J">Jueves</option>
+                                        <option value="V">Viernes</option>
+                                        <option value="S">Sábado</option>
+                                        <option value="D">Domingo</option>
+                                    </select>
+                                    <br>
+                                    <label for="nuevaHoraInicio">De&nbsp;</label>
+                                    <select id="nuevaHoraInicio" name="nuevaHoraInicio" class="selectHoras">
+                                        <option value="0">0</option>
+                                    </select>
+                                    <label for="nuevosMinutosInicio">:</label>
+                                    <select name="nuevosMinutosInicio" id="nuevosMinutosInicio" class="selectMinutos">
+                                        <option value="0">00</option>
+                                    </select>
+                                    <br>
+                                    <label for="nuevaHoraFin">A&nbsp;</label>
+                                    <select id="nuevaHoraFin" name="nuevaHoraFin" class="selectHoras">
+                                        <option value="0">0</option>
+                                    </select>
+                                    <label for="nuevosMinutosFin">:</label>
+                                    <select name="nuevosMinutosFin" id="nuevosMinutosFin" class="selectMinutos">
+                                        <option value="0">00</option>
+                                    </select>
+                                    <br>
+                                    <label for="aulaNueva">Aula&nbsp;</label>
+                                    <input type="text" name="aulaNueva" id="aulaNueva" class="ui-widget">
+                                    <br><br><button class="ui-button" onclick="agregarTemp()">Agregar</button>
+                                    <br><br>
+                                </td>
+                                <td class="align-top">
+                                    <div style="display: block;position: relative">
+                                        <label for="eliminarNuevoDia">Día&nbsp;</label>
+                                        <select name="eliminarNuevoDia" id="eliminarNuevoDia">
+                                            <option value="L">Lunes</option>
+                                            <option value="K">Martes</option>
+                                            <option value="M">Miércoles</option>
+                                            <option value="J">Jueves</option>
+                                            <option value="V">Viernes</option>
+                                            <option value="S">Sábado</option>
+                                            <option value="D">Domingo</option>
+                                        </select>
+                                        <br><br>
+                                        <button class="ui-button" onclick="eliminarTemp()">Eliminar</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="horarioTemp">
+
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <hr><button class="ui-button" onclick="agregarHora()">Enviar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <br><br>
+    <div style="width: 100%" class="center-flex">
+        <button class="ui-button" onclick="generarHorarios()" style="font-size: 2rem">Generar</button>
+    </div>
+    <hr>
+    <div id="horariosGenerados" class="center-flex" style="display: none;"></div>
+
+<script>
+    $("#forms").accordion({
+        collapsible: true,
+        active: false,
+        heightStyle: "content"
+    });
+    $(".accordion").wrap();
+    for (let i = 1; i <= 24; i ++)
+        $(".selectHoras").append("<option value='" + i + "'>" + i + "</option>");
+
+
+    for (let i = 1; i < 60; i++) {
+        const val = i < 10 ? "0" + i.toString() : i.toString();
+        $(".selectMinutos").append("<option value='" + i + "'>" + val + "</option>");
+    }
+    drawTemp();
+</script>
+</body>
+</html>
