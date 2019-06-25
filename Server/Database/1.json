@@ -1,0 +1,179 @@
+{
+  "cursos": [
+    {
+      "nombre": "Análisis de algoritmos",
+      "horarios": [
+        {
+          "grupo": "1",
+          "horario": {
+            "K": {
+              "h1": 9,
+              "m1": 30,
+              "h2": 11,
+              "m2": 20,
+              "a": "B3-06"
+            },
+            "J": {
+              "h1": 9,
+              "m1": 30,
+              "h2": 11,
+              "m2": 20,
+              "a": "B3-06"
+            }
+          },
+          "profesor": "Rodrigo Nuñez Nuñez"
+        },
+        {
+          "grupo": "2",
+          "horario": {
+            "K": {
+              "h1": 17,
+              "m1": 0,
+              "h2": 18,
+              "m2": 50,
+              "a": "B3-01"
+            },
+            "J": {
+              "h1": 17,
+              "m1": 0,
+              "h2": 18,
+              "m2": 50,
+              "a": "B3-01"
+            }
+          },
+          "profesor": "Rodrigo Nuñez Nuñez"
+        }
+      ]
+    },
+    {
+      "nombre": "Bases de Datos I",
+      "horarios": [
+        {
+          "grupo": "1",
+          "horario": {
+            "K": {
+              "h1": 7,
+              "m1": 30,
+              "h2": 9,
+              "m2": 20,
+              "a": "B3-06"
+            },
+            "J": {
+              "h1": 7,
+              "m1": 30,
+              "h2": 9,
+              "m2": 20,
+              "a": "B3-06"
+            }
+          },
+          "profesor": "Franco Quirós Ramírez"
+        },
+        {
+          "grupo": "2",
+          "horario": {
+            "M": {
+              "h1": 15,
+              "m1": 0,
+              "h2": 16,
+              "m2": 50,
+              "a": "B3-08"
+            },
+            "V": {
+              "h1": 15,
+              "m1": 0,
+              "h2": 16,
+              "m2": 50,
+              "a": "B3-08"
+            }
+          },
+          "profesor": "Salazar Hernández Alicia"
+        }
+      ]
+    },
+    {
+      "nombre": "Cálculo y Álgebra Lineal",
+      "horarios": [
+        {
+          "grupo": "1",
+          "horario": {
+            "K": {
+              "h1": 13,
+              "m1": 0,
+              "h2": 14,
+              "m2": 50,
+              "a": "F1-01"
+            },
+            "J": {
+              "h1": 13,
+              "m1": 0,
+              "h2": 14,
+              "m2": 50,
+              "a": "F1-01"
+            }
+          },
+          "profesor": "José Luis Espinoza Barboza"
+        },
+        {
+          "grupo": "2",
+          "horario": {
+            "K": {
+              "h1": 10,
+              "m1": 30,
+              "h2": 12,
+              "m2": 20,
+              "a": "D3-03"
+            },
+            "J": {
+              "h1": 10,
+              "m1": 30,
+              "h2": 12,
+              "m2": 20,
+              "a": "D3-03"
+            }
+          },
+          "profesor": "Alejandra Jiménez Romero"
+        },
+        {
+          "grupo": "3",
+          "horario": {
+            "K": {
+              "h1": 15,
+              "m1": 0,
+              "h2": 16,
+              "m2": 50,
+              "a": "D3-07"
+            },
+            "J": {
+              "h1": 15,
+              "m1": 0,
+              "h2": 16,
+              "m2": 50,
+              "a": "D3-07"
+            }
+          },
+          "profesor": "Marco Vinicio Gutiérrez Montenegro"
+        },
+        {
+          "grupo": "4",
+          "horario": {
+            "M": {
+              "h1": 13,
+              "m1": 0,
+              "h2": 14,
+              "m2": 50,
+              "a": "D3-04"
+            },
+            "V": {
+              "h1": 13,
+              "m1": 0,
+              "h2": 14,
+              "m2": 50,
+              "a": "D3-04"
+            }
+          },
+          "profesor": "Alejandra Jiménez Romero"
+        }
+      ]
+    }
+  ]
+}

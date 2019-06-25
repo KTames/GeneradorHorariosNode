@@ -1,0 +1,23 @@
+{
+  "name": "generador-horarios",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "cheerio": "latest",
+    "express": "latest",
+    "node-phantom": "^0.2.5",
+    "nodemon": "^1.19.1",
+    "phantomjs": "^2.1.7",
+    "request": "latest",
+    "webpage": "^0.3.0",
+    "ytdl-core": "^0.29.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
