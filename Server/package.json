@@ -5,13 +5,11 @@
   "main": "server.js",
   "dependencies": {
     "cheerio": "latest",
-    "express": "latest",
+    "express": "^4.17.1",
     "node-phantom": "^0.2.5",
-    "nodemon": "^1.19.1",
     "phantomjs": "^2.1.7",
-    "request": "latest",
-    "webpage": "^0.3.0",
-    "ytdl-core": "^0.29.1"
+    "request": "^2.88.2",
+    "webpage": "^0.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
