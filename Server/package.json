@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "cheerio": "latest",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "node-phantom": "^0.2.5",
     "phantomjs": "^2.1.7",
     "request": "^2.88.2",
